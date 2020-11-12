@@ -14,5 +14,16 @@ class ExampleController extends Controller
         //
     }
 
-    //
+
+    /**
+    * @OA\Get(
+    *     path="/index",
+    *     description="Home page",
+    *     @OA\Response(response="default", description="Welcome page")
+    * )
+    */
+    public function index()
+    {
+        return response()->json(["sucsess" =>1,"data"=>"info"],200);
+    }
 }
