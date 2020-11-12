@@ -8,15 +8,17 @@ class Controller extends BaseController
 {
     /**
      * @OA\Info(
-     *      version="1.2.0",
-     *      title="L5 OpenApi Makwa",
-     *      description="L5 Swagger OpenApi description"
-     * )
-     *
-     * @OA\Get(
-     *     path="/",
-     *     description="Home page",
-     *     @OA\Response(response="default", description="Welcome page")
+     *   title="Makwa Modules's API",
+     *  version="1.9.0",
+     *  @OA\Contact(
+     *    email="smta0@yahoo.com",
+     *    name="sameh taha"
+     *  ),
+     
+     *  @OA\License(
+     *             name="Developed by sameh taha",
+     *             url="https://www.makwaapp.com"
+     *         )
      * )
      */
 }
