@@ -8,19 +8,60 @@
         },
         "license": {
             "name": "Developed by sameh taha",
-            "url": "https://www.linkedin.com/in/ahmed-gad-60141a122/"
+            "url": "https://www.makwaapp.com"
         },
         "version": "1.9.0"
     },
+    "servers": [
+        {
+            "url": "{schema}://makwa.test",
+            "description": "Development",
+            "variables": {
+                "schema": {
+                    "enum": [
+                        "https",
+                        "http"
+                    ],
+                    "default": "http"
+                }
+            }
+        },
+        {
+            "url": "{schema}://dev.makwaapp.com",
+            "description": "Stage",
+            "variables": {
+                "schema": {
+                    "enum": [
+                        "https",
+                        "http"
+                    ],
+                    "default": "https"
+                }
+            }
+        },
+        {
+            "url": "{schema}://makwaapp.com",
+            "description": "Production",
+            "variables": {
+                "schema": {
+                    "enum": [
+                        "https",
+                        "http"
+                    ],
+                    "default": "https"
+                }
+            }
+        }
+    ],
     "paths": {
-        "/aindex": {
+        "/index": {
             "get": {
                 "summary": "list products",
                 "operationId": "App\\Http\\Controllers\\ExampleController::index",
                 "parameters": [
                     {
                         "name": "first_name",
-                        "in": "path",
+                        "in": "query",
                         "description": "Tags to filter by customer name",
                         "schema": {
                             "type": "string"
@@ -51,6 +92,9 @@
         },
         "/bpach": {
             "post": {
+                "tags": [
+                    "test"
+                ],
                 "summary": "list products",
                 "operationId": "App\\Http\\Controllers\\ExampleController::post",
                 "responses": {
@@ -62,6 +106,9 @@
         },
         "/cpach": {
             "put": {
+                "tags": [
+                    "users"
+                ],
                 "summary": "add products",
                 "operationId": "App\\Http\\Controllers\\ExampleController::put",
                 "responses": {
@@ -73,11 +120,38 @@
         },
         "/dindex": {
             "delete": {
+                "tags": [
+                    "users"
+                ],
                 "summary": "list products",
                 "operationId": "App\\Http\\Controllers\\ExampleController::delete",
                 "responses": {
                     "200": {
                         "description": "A list with products"
+                    }
+                },
+                "security": [
+                    {
+                        "petstore_auth": [
+                            "write:pets",
+                            "read:pets"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "petstore_auth": {
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+                        "scopes": {
+                            "read:pets": "read your pets",
+                            "write:pets": "modify pets in your account"
+                        }
                     }
                 }
             }

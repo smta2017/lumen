@@ -20,7 +20,7 @@ class ExampleController extends Controller
 
     /**
      * @OA\get(
-     *   path="/aindex",
+     *   path="/index",
      *   summary="list products",
      *   @OA\Response(
      *     response=200,
@@ -38,7 +38,7 @@ class ExampleController extends Controller
      *   @OA\Parameter(
      *     name="first_name",
      *     description="Tags to filter by customer name",
-     *     in="path",
+     *     in="query",
      *         @OA\Schema(
      *           type="string"
      *         )
@@ -73,6 +73,7 @@ class ExampleController extends Controller
     /**
      * @OA\post(
      *   path="/bpach",
+     *   tags={"test"},
      *   summary="list products",
      *    @OA\Response(
      *     response=200,
@@ -88,6 +89,7 @@ class ExampleController extends Controller
  /**
      * @OA\put(
      *   path="/cpach",
+     *   tags={"users"},
      *   summary="add products",
      *    @OA\Response(
      *     response=200,
@@ -104,11 +106,13 @@ class ExampleController extends Controller
     /**
      * @OA\delete(
      *   path="/dindex",
+     *   tags={"users"},
      *   summary="list products",
      *    @OA\Response(
      *     response=200,
      *     description="A list with products"
      *   ),
+     * security={{"petstore_auth":{"write:pets", "read:pets"}}}
      * )
      */
     public function delete()
